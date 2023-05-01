@@ -34,6 +34,16 @@
           </a>
         </li>
 
+        <!-- Supplier -->
+        <li class="nav-item">
+          <a href="<?php echo base_url('supplier'); ?>" class="nav-link <?php if ($page == 'supplier') echo " active";  ?>">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Supplier
+            </p>
+          </a>
+        </li>
+
         <!-- Bank Soal -->
         <li class="nav-item has-treeview <?php if ($page == 'bank_soal') echo "menu-open";  ?>">
           <a href="#" class="nav-link <?php if ($page == 'bank_soal') echo "active";  ?>">
