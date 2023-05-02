@@ -3,7 +3,8 @@
     <div class="container">
         <div class="row footer-bottom d-flex justify-content-between align-items-center ">
             <p class="col-lg col-md footer-text text-center">
-                Copyright &copy;<script>document.write(new Date().getFullYear());</script>. By Bang Ambo. All rights reserved. V 1.0.0 
+                <!-- Copyright &copy;<script>document.write(new Date().getFullYear());</script>. By Bang Ambo. All rights reserved. V 1.0.0  -->
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All rights reserved. V 1.0.0 
             </p>
         </div>
     </div>

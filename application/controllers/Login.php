@@ -22,7 +22,7 @@ class Login extends CI_Controller {
     // Halaman Login Aplikasi
 	public function index()
 	{
-		$data ['title'] 	= "Simulasi CAT | Login";
+		$data ['title'] 	= "Akuasik.com | Login";
 		$this->load->view('v_login/index', $data);
 	}
 

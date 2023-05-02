@@ -27,8 +27,8 @@
         <section class="latest_news_area p_120">
             <div class="container">
                 <div class="main_title">
-                    <h2>Pendaftaran Simulasi CAT</h2>
-                    <p>Aplikasi Simulasi CAT (Computer Assisted Test) SKD (Seleksi Kompetensi Dasar) CPNS (Calon Pegawai Negeri Sipil) </p>
+                    <h2>Pendaftaran Akuasik.com</h2>
+                    <!-- <p>Aplikasi Simulasi CAT (Computer Assisted Test) SKD (Seleksi Kompetensi Dasar) CPNS (Calon Pegawai Negeri Sipil) </p> -->
                 </div>
                 <div class="latest_news_inner row">
                     <div class="col-lg-6 mx-auto">
