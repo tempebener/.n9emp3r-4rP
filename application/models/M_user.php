@@ -95,6 +95,12 @@ class M_user extends CI_Model {
 		$this->db->update('tbl_user', $data);
 	}
 
+	public function view_where($table,$data)
+	{
+		$this->db->where($data);
+		return $this->db->get($table);
+	}
+
 }
 
 /* End of file M_user.php */
