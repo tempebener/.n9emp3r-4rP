@@ -22,7 +22,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Dashboard</h1>
+            <h4><?php echo $company_profile['name']; ?> <small class="small-text"> Management System</small></h4>
           </div>
         </div>
       </div><!-- /.container-fluid -->
