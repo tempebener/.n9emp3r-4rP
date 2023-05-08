@@ -15,7 +15,7 @@ class Dashboard extends CI_Controller {
   // Halaman Dashboard
   public function index()
   {
-    $data ['title']   = "Simulasi CAT | Dashboard";
+    $data ['title']   = "ASI | Dashboard";
     $data ['page']    = "dashboard";
   	$data ['nama']    = $this->session->userdata('nama');
     $data ['company_profile'] = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('role_id')))->row_array();

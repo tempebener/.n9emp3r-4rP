@@ -21,4 +21,6 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte3/dist/css/adminlte.min.css">
   <!-- Flipclock -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/flipclock/compiled/flipclock.css">
+  <!-- Bayoeway Style -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte3/dist/css/bayoeway-style.css">
 </head>

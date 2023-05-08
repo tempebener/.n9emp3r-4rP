@@ -29,7 +29,7 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    <!-- <section class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12 col-12">
@@ -46,7 +46,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
