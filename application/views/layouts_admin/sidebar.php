@@ -563,13 +563,25 @@
         </li>
 
         <!-- Helpdesk -->
-        <li class="nav-item">
-          <a href="<?php echo base_url('datamember'); ?>" class="nav-link <?php if ($page == 'data_members') echo " active";  ?>">
+        <li class="nav-item has-treeview <?php if ($page == 'data_members') echo "menu-open"; ?>">
+          <a href="#" class="nav-link <?php if ($page == 'data_members') echo "active"; ?>">
             <i class="nav-icon fas fa-user-check"></i>
             <p>
-              Users
+              Helpdesk
+              <i class="right fas fa-angle-left"></i>
             </p>
           </a>
+
+          <ul class="nav nav-treeview">
+            <li class="nav-item submenu-custom">
+              <a href="<?php echo base_url('datamember'); ?>" class="nav-link <?php if ($page == 'data_members') echo " active";  ?>">
+                <i class="far fa-circle fa-sm"></i>
+                <p>
+                  Users
+                </p>
+              </a>
+            </li>
+          </ul>
         </li>
 
       </ul>
