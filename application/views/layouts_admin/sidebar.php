@@ -563,8 +563,8 @@
         </li>
 
         <!-- Helpdesk -->
-        <li class="nav-item has-treeview <?php if ($page == 'data_members') echo "menu-open"; ?>">
-          <a href="#" class="nav-link <?php if ($page == 'data_members') echo "active"; ?>">
+        <li class="nav-item has-treeview <?php if ($page == 'datamember') echo "menu-open"; ?>">
+          <a href="#" class="nav-link <?php if ($page == 'datamember') echo "active"; ?>">
             <i class="nav-icon fas fa-user-check"></i>
             <p>
               Helpdesk
