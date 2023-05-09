@@ -16,7 +16,7 @@ class DataMember extends CI_Controller {
 	public function index()
 	{
 		$data ['title']   = "Helpdesk | Users";
-	    $data ['page']    = "data_members";
+	    $data ['page']    = "datamember";
 	  	$data ['nama']    = $this->session->userdata('nama');
 	  	$data ['company_profile'] = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('role_id')))->row_array();
 

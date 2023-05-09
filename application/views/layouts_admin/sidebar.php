@@ -586,9 +586,9 @@
 
 
         <li class="nav-item">
-          <a href="<?php echo base_url('datamember'); ?>" class="nav-link <?php if ($page == 'data_members') echo " active";  ?>">
+          <a href="<?php echo base_url('datamember'); ?>" class="nav-link <?php if ($page == 'datamember') echo " active";  ?>">
             <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
-            <i class="nav-icon fa user-check"></i>
+            <i class="nav-icon fa fa-user-check"></i>
             <p>
               Users
             </p>
