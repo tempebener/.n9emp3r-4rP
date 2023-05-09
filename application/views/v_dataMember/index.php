@@ -50,10 +50,12 @@
                 <table id="example" class="table table-bordered table-striped">
                   <thead>
                   <tr>
+                    <th>Action</th>
                     <th>No</th>
-                    <th>Nama</th>
-                    <th>Email</th>
-                    <th>Bergabung Sejak</th>
+                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Level</th>
+                    <th>Blocked</th>
                   </tr>
                   </thead>
                   <tbody>
