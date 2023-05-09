@@ -22,8 +22,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Member Aktif</h1>
+            <h5><?php echo $company_profile['name']; ?> <small class="small-text"> Management System</small></h5>
           </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item active"><i class="fas fa-user-check"></i> Users</li>
+            </ol>
+          </div><!-- /.col -->
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -36,7 +41,10 @@
             <!-- Default box -->
             <div class="card card-outline card-primary">
               <div class="card-header">
-                <h3 class="card-title">Tabel Data Member Aktif</h3>
+                <h3 class="card-title">Users</h3>
+                <div class="float-sm-right">
+                  <a class="btn btn-success btn-xs" href="frsHelpdeskUsers.php?act=add" title="Add new"><i class="fa fa-plus"></i> <span class="hidden-xs hidden-sm">Add New</span></a>
+                </div>
               </div>
               <div class="card-body table-responsive">
                 <table id="example" class="table table-bordered table-striped">

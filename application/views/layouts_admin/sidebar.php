@@ -1,11 +1,11 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="" class="brand-link">
-    <img src="<?php echo base_url(); ?>assets/adminlte3/dist/img/AdminLTELogo.png"
+  <a href="" class="brand-link text-center">
+    <!-- <img src="<?php echo base_url(); ?>assets/adminlte3/dist/img/AdminLTELogo.png"
          alt="AdminLTE Logo"
          class="brand-image img-circle elevation-3"
-         style="opacity: .8">
+         style="opacity: .8"> -->
     <span class="brand-text font-weight-light"><?php echo $company_profile['initial']; ?></span>
   </a>
 
@@ -27,9 +27,10 @@
         <!-- Dashboard -->
         <li class="nav-item">
           <a href="<?php echo base_url('dashboard'); ?>" class="nav-link <?php if ($page == 'dashboard') echo " active";  ?>">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
+            <i class="nav-icon fa fa-home"></i>
             <p>
-              Dashboard
+              Home
             </p>
           </a>
         </li>
@@ -561,15 +562,28 @@
 
         </li>
 
-        <!-- Data Members -->
-        <li class="nav-item">
-          <a href="<?php echo base_url('datamember'); ?>" class="nav-link <?php if ($page == 'data_members') echo " active";  ?>">
+        <!-- Helpdesk -->
+        <li class="nav-item has-treeview <?php if ($page == 'datamember') echo "menu-open"; ?>">
+          <a href="#" class="nav-link <?php if ($page == 'datamember') echo "active"; ?>">
             <i class="nav-icon fas fa-user-check"></i>
             <p>
-              Users
+              Helpdesk
+              <i class="right fas fa-angle-left"></i>
             </p>
           </a>
+
+          <ul class="nav nav-treeview">
+            <li class="nav-item submenu-custom">
+              <a href="<?php echo base_url('datamember'); ?>" class="nav-link <?php if ($page == 'data_members') echo " active";  ?>">
+                <i class="far fa-circle fa-sm"></i>
+                <p>
+                  Users
+                </p>
+              </a>
+            </li>
+          </ul>
         </li>
+
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
