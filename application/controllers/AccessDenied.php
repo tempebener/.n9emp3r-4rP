@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AccessDenied extends CI_Controller {
+class Accessdenied extends CI_Controller {
 
 	// Halaman Access Denied
 	public function index()
