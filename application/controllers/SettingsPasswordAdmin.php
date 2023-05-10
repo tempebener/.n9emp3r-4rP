@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SettingsPasswordAdmin extends CI_Controller {
+class Settingspasswordadmin extends CI_Controller {
 
 	public function __construct() 
   	{
