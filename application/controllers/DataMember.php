@@ -18,7 +18,7 @@ class DataMember extends CI_Controller {
 		$data ['title']   = "Helpdesk | Users";
 	    $data ['page']    = "data_members";
 	  	$data ['nama']    = $this->session->userdata('nama');
-	  	// $data ['company_profile'] = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('role_id')))->row_array();
+	  	$data ['company_profile'] = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('role_id')))->row_array();
 
 	  	$this->load->view('v_dataMember/index', $data);
 	}
@@ -33,7 +33,8 @@ class DataMember extends CI_Controller {
 		foreach ($list as $members) {
 			$no++;
 			$row = array();
-			$row[] = $this->_action($members->id);
+			// $row[] = $this->_action($members->id);
+			$row[] = $no;
 			$row[] = $no;
 			$row[] = $members->email;
 			$row[] = $members->nama;
