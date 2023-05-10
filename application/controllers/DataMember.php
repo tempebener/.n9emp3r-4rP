@@ -35,7 +35,6 @@ class DataMember extends CI_Controller {
 			$row = array();
 			// $row[] = $this->_action($members->id);
 			$row[] = $no;
-			$row[] = $no;
 			$row[] = $members->email;
 			$row[] = $members->nama;
 			$row[] = $members->email;
@@ -52,22 +51,6 @@ class DataMember extends CI_Controller {
 		
 		//output to json format
 		echo json_encode($output);
-	}
-
-
-	// Tombol Aksi Pada Data Tabel Bank Soal
-	private function _action($idUsers)
-	{ 
-		$link = "
-			<a href='".base_url('datamember/update/'.$idUsers)."' data-toggle='tooltip' data-placement='top' class='btn-edit' title='Update' value='".$idUsers."'>
-	      		<button type='button' class='btn btn-outline-success btn-xs' data-toggle='modal' data-target='#modalEdit'><i class='fa fa-edit'></i></button>
-	      	</a>
-	      
-	      	<a href='".base_url('datamember/delete/'.$idUsers)."' class='btn-delete' data-toggle='tooltip' data-placement='top' title='Delete'>
-	      		<button type='button' class='btn btn-outline-danger btn-xs'><i class='fa fa-trash'></i></button>
-	      	</a>
-	    ";
-	    return $link;
 	}
 
 
