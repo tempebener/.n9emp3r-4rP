@@ -53,7 +53,6 @@ class Datamember extends CI_Controller {
 		echo json_encode($output);
 	}
 
-
 }
 
 /* End of file DataMember.php */
