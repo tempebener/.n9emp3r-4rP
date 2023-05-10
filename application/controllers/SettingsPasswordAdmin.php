@@ -43,6 +43,7 @@ class Settingspasswordadmin extends CI_Controller {
 		$data ['title']   = "Simulasi CAT | Settings Password Admin";
     	$data ['page']    = "settings_password";
   		$data ['nama']    = $this->session->userdata('nama');
+	  	$data ['company_profile'] = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('role_id')))->row_array();
 
   		$this->load->view('v_settingsPasswordAdmin/index', $data);
 	}
