@@ -7,7 +7,7 @@ class Cat extends CI_Controller {
 	{
 		parent::__construct();
 		date_default_timezone_set('Asia/Jakarta');
-		if($this->session->userdata('role_id') != "2")
+		if($this->session->userdata('level_id') != "2")
 	    {
 	      redirect('accessdenied');
 	    }

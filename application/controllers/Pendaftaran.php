@@ -17,7 +17,7 @@ class Pendaftaran extends CI_Controller {
             	'required' => 'Nama Lengkap Tidak Boleh Kosong!'
         	]
 		);
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[tbl_user.email]', 
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[frs_users.email]', 
         	[
         		'required' => 'Email Tidak Boleh Kosong!',
             	'valid_email' => 'Email Tidak Valid!',
@@ -60,11 +60,11 @@ class Pendaftaran extends CI_Controller {
         //Jika Data Valid
         if ($this->form_validation->run()) {
         	$data = [
-				'role_id' 		=> 2,
+				'level_id' 		=> 2,
 				'nama' 			=> $nama,
 				'email' 		=> $email,
 				'password' 		=> $this->encryption->encrypt($password),
-                'is_active' 	=> 1,
+                'access_app' 	=> 1,
                 'date_created' 	=> time()
 			];
 			$this->M_user->addUser($data);

@@ -11,16 +11,16 @@ class M_user extends CI_Model {
 	private $column_search = array('id', 'nama','email', 'date_created'); //set column field database for datatable searchable 
 	private $order = array('id' => 'asc'); // default order 
 
-	private function _tbl_user()
+	private function _frs_users()
 	{
 		$this->db->select('*');
-		$this->db->from('tbl_user');
-		$this->db->where('role_id', 2);
-		$this->db->where('is_active', 1);
+		$this->db->from('frs_users');
+		$this->db->where('level_id', 2);
+		$this->db->where('access_app', 1);
 	}
 
 	private function _get_query() {
-		$this->_tbl_user();
+		$this->_frs_users();
 
 		$i = 0;
 		foreach ($this->column_search as $item) { // loop column 
@@ -65,7 +65,7 @@ class M_user extends CI_Model {
 	}
 
 	public function count_all() {
-		$this->_tbl_user();
+		$this->_frs_users();
 		return $this->db->count_all_results();
 	}
 	
@@ -75,30 +75,44 @@ class M_user extends CI_Model {
 
 	public function addUser($data)
 	{
-		$this->db->insert('tbl_user', $data);
+		$this->db->insert('frs_users', $data);
 		
 	}
 
 	public function cekUserByEmail($email)
 	{
-		return $this->db->get_where('tbl_user', array('email' => $email));
+		return $this->db->get_where('frs_users', array('email' => $email));
 	}
 
 	public function cekUserById($idUser)
 	{
-		return $this->db->get_where('tbl_user', array('id' => $idUser));
+		return $this->db->get_where('frs_users', array('id' => $idUser));
 	}
 
 	public function updateUserById($data, $idUser)
 	{
 		$this->db->where('id', $idUser);
-		$this->db->update('tbl_user', $data);
+		$this->db->update('frs_users', $data);
 	}
 
 	public function view_where($table,$data)
 	{
 		$this->db->where($data);
 		return $this->db->get($table);
+	}
+
+	public function updateUsers($data, $idBankSoal)
+	{
+		$this->db->where('id', $idBankSoal);
+		$this->db->update('tbl_bank_soal', $data);
+		
+	}
+
+	public function deleteUsersById($idBankSoal)
+	{
+		$this->db->where('id', $idBankSoal);
+		$this->db->delete('tbl_bank_soal');
+		
 	}
 
 }

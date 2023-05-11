@@ -43,7 +43,7 @@ class Login extends CI_Controller {
             //Jika User Ada
             if ($user) {
                 //Jika User sudah diaktivasi
-                if ($user['is_active'] == 1) {
+                if ($user['access_app'] == 1) {
                     //Cek Password
                     $p = $this->encryption->decrypt($user['password']);
                     //Jika Password benar
@@ -52,11 +52,11 @@ class Login extends CI_Controller {
                             'id'        => $user['id'],
                             'nama'      => $user['nama'],
                             'email'     => $user['email'],
-                            'role_id'   => $user['role_id']
+                            'level_id'   => $user['level_id']
                         ];
                         $this->session->set_userdata($data);
-                        //Cek role_id apakah Admin atau Member
-                        if ($user['role_id'] == 1) {
+                        //Cek level_id apakah Admin atau Member
+                        if ($user['level_id'] == 1) {
                             //Admin
                             $validasi = [
                                 'success'   => true,

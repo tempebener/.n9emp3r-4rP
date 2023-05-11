@@ -50,7 +50,7 @@
                 <table id="example" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <!-- <th>Action</th> -->
+                    <th>Action</th>
                     <th>No</th>
                     <th>Username</th>
                     <th>Name</th>

@@ -6,7 +6,7 @@ class Dashboard extends CI_Controller {
   public function __construct() 
   {
     parent::__construct();
-    if($this->session->userdata('role_id') != "1")
+    if($this->session->userdata('level_id') != "1")
     {
       redirect('accessdenied');
     }
@@ -18,7 +18,7 @@ class Dashboard extends CI_Controller {
     $data ['title']   = "ASI | Dashboard";
     $data ['page']    = "dashboard";
   	$data ['nama']    = $this->session->userdata('nama');
-    $data ['company_profile'] = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('role_id')))->row_array();
+    $data ['company_profile'] = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('level_id')))->row_array();
 
   	$this->load->view('v_dashboard/index', $data);
   }
