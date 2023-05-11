@@ -101,18 +101,23 @@ class M_user extends CI_Model {
 		return $this->db->get($table);
 	}
 
-	public function updateUsers($data, $idBankSoal)
+	public function updateUsers($data, $idUser)
 	{
-		$this->db->where('id', $idBankSoal);
-		$this->db->update('tbl_bank_soal', $data);
+		$this->db->where('id', $idUser);
+		$this->db->update('frs_users', $data);
 		
 	}
 
-	public function deleteUsersById($idBankSoal)
+	public function deleteUsersById($idUser)
 	{
-		$this->db->where('id', $idBankSoal);
-		$this->db->delete('tbl_bank_soal');
+		$this->db->where('id', $idUser);
+		$this->db->delete('frs_users');
 		
+	}
+
+	public function getUserById($idUser)
+	{
+		return $this->db->get_where('frs_users', array('id' => $idUser));
 	}
 
 }

@@ -17,7 +17,7 @@ class Datamember extends CI_Controller {
 	{
 		$data ['title']   = "Helpdesk | Users";
 	    $data ['page']    = "data_members";
-	  	$data ['nama']    = $this->session->userdata('nama');
+	  	$data ['nama']    = $this->session->userdata('name');
 	  	$data ['company_profile'] = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('level_id')))->row_array();
 
 	  	$this->load->view('v_dataMember/index', $data);
@@ -33,12 +33,13 @@ class Datamember extends CI_Controller {
 		foreach ($list as $members) {
 			$no++;
 			$row = array();
-			// $row[] = $this->_action($members->id);
+			$row[] = $this->_action($members->id);
 			$row[] = $no;
-			$row[] = $members->email;
-			$row[] = $members->nama;
-			$row[] = $members->email;
-			$row[] = date('d F Y', $members->date_created);
+			$row[] = $members->id;
+			$row[] = $members->name;
+			$row[] = $members->level_id;
+			// $row[] = date('d F Y', $members->date_created);
+			$row[] = $members->blocked;
 			$data[] = $row; 
 		}
 
@@ -55,14 +56,14 @@ class Datamember extends CI_Controller {
 
 
 	// Tombol Aksi Pada Data Tabel Bank Soal
-	private function _action($idBankSoal)
+	private function _action($idUsers)
 	{ 
 		$link = "
-			<a href='".base_url('datamember/update/'.$idBankSoal)."' data-toggle='tooltip' data-placement='top' class='btn-edit' title='Update' value='".$idBankSoal."'>
+			<a href='".base_url('datamember/update/'.$idUsers)."' data-toggle='tooltip' data-placement='top' class='btn-edit' title='Update' value='".$idUsers."'>
 	      		<button type='button' class='btn btn-outline-success btn-xs' data-toggle='modal' data-target='#modalEdit'><i class='fa fa-edit'></i></button>
 	      	</a>
 	      
-	      	<a href='".base_url('datamember/delete/'.$idBankSoal)."' class='btn-delete' data-toggle='tooltip' data-placement='top' title='Delete'>
+	      	<a href='".base_url('datamember/delete/'.$idUsers)."' class='btn-delete' data-toggle='tooltip' data-placement='top' title='Delete'>
 	      		<button type='button' class='btn btn-outline-danger btn-xs'><i class='fa fa-trash'></i></button>
 	      	</a>
 	    ";
@@ -71,17 +72,16 @@ class Datamember extends CI_Controller {
 
 
 	// Menampilkan ajax data bank soal berdasarkan Id Users
-	public function ajaxUpdate($idBankSoal)
+	public function ajaxUpdate($idUsers)
 	{
-		$data = $this->M_bank_soal->getBankSoalById($idBankSoal)->row_array();
+		$data = $this->M_user->getBankSoalById($idUsers)->row_array();
 		echo json_encode($data);
 	}
 
 	// Delete Users
-	public function delete($idKategoriSoal, $idBankSoal)
+	public function delete($idUsers)
 	{
-		$kategori_id 	= $idKategoriSoal; 
-		$this->M_bank_soal->deleteBankSoalById($idBankSoal);
+		$this->M_user->deleteUsersById($idUsers);
 	}
 
 }

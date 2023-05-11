@@ -6,10 +6,15 @@ class Login extends CI_Controller {
     // Validasi Input Login User
     private function _validLogin()
     {
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', 
+        // $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', 
+        //     [
+        //         'required' => 'Email Tidak Boleh Kosong!',
+        //         'valid_email' => 'Email Tidak Valid!'
+        //     ]
+        // );
+        $this->form_validation->set_rules('id', 'id', 'trim|required', 
             [
-                'required' => 'Email Tidak Boleh Kosong!',
-                'valid_email' => 'Email Tidak Valid!'
+                'required' => 'Username Tidak Boleh Kosong!'
             ]
         );
         $this->form_validation->set_rules('password', 'Password', 'trim|required',
@@ -22,7 +27,7 @@ class Login extends CI_Controller {
     // Halaman Login Aplikasi
 	public function index()
 	{
-		$data ['title'] 	= "Akuasik.com | Login";
+		$data ['title'] 	= "ASI | Login";
 		$this->load->view('v_login/index', $data);
 	}
 
@@ -33,13 +38,15 @@ class Login extends CI_Controller {
         //Cek Validasi Input Login User
         $this->_validLogin();
 
-        $email      = $this->input->post('email');
+        // $email      = $this->input->post('email');
+        $idUsers  = $this->input->post('id');
         $password   = $this->input->post('password');
 
         //Jika Data Valid
         if ($this->form_validation->run()) {
             //Cek Email User yang terdapat didalam database
-            $user = $this->M_user->cekUserByEmail($email)->row_array();
+            // $user = $this->M_user->cekUserByEmail($email)->row_array();
+            $user = $this->M_user->cekUserById($idUsers)->row_array();
             //Jika User Ada
             if ($user) {
                 //Jika User sudah diaktivasi
@@ -50,8 +57,8 @@ class Login extends CI_Controller {
                     if ($password == $p) {
                         $data = [
                             'id'        => $user['id'],
-                            'nama'      => $user['nama'],
-                            'email'     => $user['email'],
+                            'name'      => $user['name'],
+                            // 'email'     => $user['email'],
                             'level_id'   => $user['level_id']
                         ];
                         $this->session->set_userdata($data);
@@ -87,7 +94,8 @@ class Login extends CI_Controller {
                 else {
                     $validasi = [
                         'error'   => true,
-                        'email_error' => 'Segera Aktifkan Email Anda!'
+                        // 'email_error' => 'Segera Aktifkan Akun Anda!'
+                        'id_error' => 'Segera Aktifkan Akun Anda!'
                     ];
                     echo json_encode($validasi);
                 }
@@ -97,7 +105,8 @@ class Login extends CI_Controller {
             else {
                 $validasi = [
                     'error'   => true,
-                    'email_error' => 'Email Tidak Terdaftar!'
+                    // 'email_error' => 'Username Tidak Terdaftar!'
+                    'id_error' => 'Username Tidak Terdaftar!'
                 ];
                 echo json_encode($validasi);
             }
@@ -107,7 +116,8 @@ class Login extends CI_Controller {
         else {
             $validasi = [
                 'error'   => true,
-                'email_error' => form_error('email'),
+                // 'email_error' => form_error('email'),
+                'id_error' => form_error('idUsers'),
                 'password_error' => form_error('password')
             ];
             echo json_encode($validasi);
