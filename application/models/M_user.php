@@ -120,6 +120,11 @@ class M_user extends CI_Model {
 		return $this->db->get_where('frs_users', array('id' => $idUser));
 	}
 
+	public function allLevel() {
+	  $query = $this->db->get("frs_users_level");
+	  return $query->result();
+	}
+
 }
 
 /* End of file M_user.php */

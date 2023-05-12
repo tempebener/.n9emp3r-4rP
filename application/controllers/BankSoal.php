@@ -164,6 +164,7 @@ class Banksoal extends CI_Controller {
 		$data ['title'] 	= "Simulasi CAT | Bank Soal";
 		$data ['page']    	= "bank_soal";
 		$data ['nama'] 		= $this->session->userdata('nama');
+	  	$data ['company_profile'] = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('level_id')))->row_array();
 
 		//Cek Kategori Soal Berdasarkan Id Kategori Soal
 		$cekKategori 			= $this->M_kategori->cekKategoriById($idKategoriSoal)->row_array();
