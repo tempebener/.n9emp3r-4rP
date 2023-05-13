@@ -21,7 +21,13 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="level_id">Level</label>
-                <input type="text" class="form-control" name="level_id" placeholder="Level">
+                <!-- <input type="text" class="form-control" name="level_id" placeholder="Level"> -->
+                <?php
+                  foreach($all_level as $level) {
+                      $al[$level->id] = $level->description;
+                  }
+                ?>
+                <?= form_dropdown('level_id', $al, set_value('level', $this->uri->segment(3)), 'class="form-control select2 tip" id="level_id"  required="required" style="width:100%;"'); ?>
                 <small id="level_id_error" class="text-danger"> </small>
               </div>
             </div>

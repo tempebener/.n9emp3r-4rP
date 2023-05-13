@@ -19,6 +19,7 @@ class Datamember extends CI_Controller {
 	    $data ['page']    = "data_members";
 	  	$data ['nama']    = $this->session->userdata('name');
 	  	$data ['company_profile'] = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('level_id')))->row_array();
+	  	$data ['all_level']    = $this->M_user->allLevel();
 
 	  	$this->load->view('v_dataMember/index', $data);
 	}
@@ -113,8 +114,7 @@ class Datamember extends CI_Controller {
 				'name' => $name,
 				'password' => $this->encryption->encrypt($password),
 				'level_id' => $level_id,
-				'blocked' => $blocked,
-				'all_level' => $this->M_user->allLevel()
+				'blocked' => $blocked
 			];
 
 			//Update Data User
