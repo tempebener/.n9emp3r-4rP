@@ -16,12 +16,12 @@ class Datamember extends CI_Controller {
 	public function index()
 	{
 		$data ['title']   = "Helpdesk | Users";
-	    $data ['page']    = "data_members";
-	  	$data ['nama']    = $this->session->userdata('name');
-	  	$data ['company_profile'] = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('level_id')))->row_array();
-	  	$data ['all_level']    = $this->M_user->allLevel();
+		$data ['page']    = "data_members";
+		$data ['nama']    = $this->session->userdata('name');
+		$data ['company_profile'] = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('level_id')))->row_array();
+		$data ['all_level']    = $this->M_user->allLevel();
 
-	  	$this->load->view('v_dataMember/index', $data);
+		$this->load->view('v_dataMember/index', $data);
 	}
 
 	// Server Side Data Member Aktive
@@ -58,11 +58,11 @@ class Datamember extends CI_Controller {
 	// Validasi Update Data User
 	private function _validUpdateUser()
 	{
-		$this->form_validation->set_rules('name', 'Name', 'trim|required',
-			[
-            	'required' => "Name Can't be Empty!"
-        	]
-		);
+		// $this->form_validation->set_rules('name', 'Name', 'trim|required',
+		// 	[
+  //           	'required' => "Name Can't be Empty!"
+  //       	]
+		// );
 		// $this->form_validation->set_rules('password', 'Password', 'trim|required',
 		// 	[
   //           	'required' => "Password Can't be Empty!"

@@ -121,10 +121,17 @@ class M_user extends CI_Model {
 	}
 
 	public function allLevel() {
-	  $query = $this->db->get("frs_users_level");
-	  return $query->result();
+		$query = $this->db->get("frs_users_level");
+		return $query->result();
 	}
 
+	public function view_join_users($table1,$table2,$field,$field2,$order){
+		$this->db->select('*,('.$table1.'.id) as id_users,('.$table2.'.id) as id_users_level');
+		$this->db->from($table1);
+		$this->db->join($table2, $table1.'.'.$field.'='.$table2.'.'.$field2);
+		$this->db->order_by($order,"DESC");
+		return $this->db->get()->result_array();
+	}
 }
 
 /* End of file M_user.php */

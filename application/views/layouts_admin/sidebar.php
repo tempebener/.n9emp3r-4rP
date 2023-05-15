@@ -581,6 +581,14 @@
                 </p>
               </a>
             </li>
+            <li class="nav-item submenu-custom">
+              <a href="<?php echo base_url('helpdesk/users'); ?>" class="nav-link <?php if ($page == 'users') echo " active";  ?>">
+                <i class="far fa-circle fa-sm"></i>
+                <p>
+                  Users
+                </p>
+              </a>
+            </li>
           </ul>
         </li>
 
