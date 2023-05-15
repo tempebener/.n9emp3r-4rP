@@ -125,7 +125,7 @@
               </a>
             </li>
             <li class="nav-item submenu-custom">
-              <a href="<?php echo base_url('purchasing/list_supplier'); ?>" class="nav-link <?php if ($page == 'purchasing/list_supplier') echo "active";  ?> disabled">
+              <a href="<?php echo base_url('purchasing/list_supplier'); ?>" class="nav-link <?php if ($page == 'purchasing_list_supplier') echo "active";  ?>">
                 <i class="far fa-circle fa-sm"></i>
                 <p>
                   List Supplier
@@ -585,7 +585,7 @@
               <a href="<?php echo base_url('helpdesk/users'); ?>" class="nav-link <?php if ($page == 'users') echo " active";  ?>">
                 <i class="far fa-circle fa-sm"></i>
                 <p>
-                  Users
+                  Users 2
                 </p>
               </a>
             </li>

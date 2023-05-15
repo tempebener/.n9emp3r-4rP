@@ -44,8 +44,10 @@
               <div class="form-group">
                 <label for="blocked">Blocked</label>
                 <select name="blocked" class="form-control" data-plugin="select_hrm" data-placeholder="Select One">
-                  <option <?php if($data->blocked == "No"): ?> selected="selected" <?php endif;?> value="No">No</option>
-                  <option <?php if($data->blocked == "Yes"): ?> selected="selected" <?php endif;?> value="Yes">Yes</option>
+                  <!-- <option <?php if($data->blocked == "No"): ?> selected="selected" <?php endif;?> value="No">No</option>
+                  <option <?php if($data->blocked == "Yes"): ?> selected="selected" <?php endif;?> value="Yes">Yes</option> -->
+                  <option selected="selected" value="No">No</option>
+                  <option value="Yes">Yes</option>
                 </select>
                 <small id="blocked_error" class="text-danger"> </small>
               </div>

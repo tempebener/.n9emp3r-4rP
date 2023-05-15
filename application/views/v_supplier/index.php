@@ -21,9 +21,14 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-12">
-            <h1>Supplier</h1>
+          <div class="col-sm-6">
+            <h5><?php echo $company_profile['name']; ?> <small class="small-text"> Management System</small></h5>
           </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item active"><i class="fas fa-user-check"></i> Supplier</li>
+            </ol>
+          </div><!-- /.col -->
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -33,39 +38,19 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <!-- Modal Add Supplier -->
-            <?php include 'add.php';  ?>
-            
             <!-- Default box -->
             <div class="card card-outline card-primary">
               <div class="card-header">
-                <h3 class="card-title">Tabel Data Supplier</h3>
-
-                <div class="card-tools">
-                  <a data-toggle="tooltip" data-placement="top" title="Add">
-                    <button id="addSupplier" type="button" class="btn btn-outline-primary btn-sm" value="<?php echo $kategoriSupplier['category']; ?>" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modalAdd">
-                      <i class="fas fa-plus"></i>
-                    </button>
-                  </a>
+                <h3 class="card-title">Supplier</h3>
+                <div class="float-sm-right">
+                  <a class="btn btn-success btn-xs" href="frsHelpdeskUsers.php?act=add" title="Add new"><i class="fa fa-plus"></i> <span class="hidden-xs hidden-sm">Add New</span></a>
                 </div>
               </div>
               <div class="card-body table-responsive">
                 <table id="example" class="table table-bordered table-striped">
                   <thead>
-                    <th>No.</th>
-                    <th>Account</th>
-                    <th>Name</th>
-                    <th>City</th>
-                    <th>Email Address</th>
-                    <th>Contact Person</th>
-                    <th>Limit Credit</th>
-                    <th>Action</th>
-                  </thead>
-                  <tbody>
-                  
-                  </tbody>
-                  <tfoot>
                     <tr>
+                      <th>Action</th>
                       <th>No.</th>
                       <th>Account</th>
                       <th>Name</th>
@@ -73,9 +58,11 @@
                       <th>Email Address</th>
                       <th>Contact Person</th>
                       <th>Limit Credit</th>
-                      <th>Action</th>
                     </tr>
-                  </tfoot>
+                  </thead>
+                  <tbody>
+                  
+                  </tbody>
                 </table>
               </div>
               <!-- /.card-body -->

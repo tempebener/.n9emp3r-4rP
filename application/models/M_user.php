@@ -125,10 +125,10 @@ class M_user extends CI_Model {
 		return $query->result();
 	}
 
-	public function view_join_users($table1,$table2,$field,$field2,$order){
-		$this->db->select('*,('.$table1.'.id) as id_users,('.$table2.'.id) as id_users_level');
-		$this->db->from($table1);
-		$this->db->join($table2, $table1.'.'.$field.'='.$table2.'.'.$field2);
+	public function view_join_users($order){
+		$this->db->select('*,(u.id) as id_users,(ul.id) as id_users_level');
+		$this->db->from('frs_users u');
+		$this->db->join('frs_users_level ul', 'u.id = ul.id');
 		$this->db->order_by($order,"DESC");
 		return $this->db->get()->result_array();
 	}

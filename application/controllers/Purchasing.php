@@ -70,6 +70,17 @@ class Purchasing extends CI_Controller {
 	  	$this->load->view('v_dataPurchaseOrder/index', $data);
 	}
 
+	public function list_supplier()
+	{
+		$data ['title']   = "Purchasing | Supplier";
+		$data ['page']    = "purchasing_list_supplier";
+		$data ['nama']    = $this->session->userdata('name');
+		$data ['company_profile'] = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('level_id')))->row_array();
+		$data ['all_level']    = $this->M_user->allLevel();
+
+		$this->load->view('v_supplier/index', $data);
+	}
+
 }
 
 /* End of file DataMember.php */
