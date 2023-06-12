@@ -33,12 +33,20 @@ class Datamember extends CI_Controller {
 		
 		foreach ($list as $members) {
 			$no++;
+
+            $level = $this->M_user->getLevelById($members->id)->row_array();
+			if(!is_null($level)){
+				$level_name = $level[0]->description;
+			} else {
+				$level_name = '--';
+			}
+
 			$row = array();
 			$row[] = $this->_action($members->id);
 			$row[] = $no;
 			$row[] = $members->id;
 			$row[] = $members->name;
-			$row[] = $members->level_id;
+			$row[] = $level_name;
 			// $row[] = date('d F Y', $members->date_created);
 			$row[] = $members->blocked;
 			$data[] = $row; 

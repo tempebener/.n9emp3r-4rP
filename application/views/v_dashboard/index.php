@@ -22,7 +22,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4><?php echo $company_profile['name']; ?> <small class="small-text"> Management System</small></h4>
+            <h5><?php echo $company_profile['name']; ?> <small class="small-text"> Management System</small></h5>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">

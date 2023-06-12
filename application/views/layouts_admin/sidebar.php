@@ -1,3 +1,7 @@
+<?php 
+  $company_profile = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('level_id')))->row_array(); 
+  $nama = $this->session->userdata('name');
+?>
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
@@ -562,7 +566,7 @@
 
         </li>
 
-        <!-- Helpdesk -->
+        <!-- Data Members -->
         <li class="nav-item has-treeview <?php if ($page == 'data_members') echo "menu-open"; ?>">
           <a href="#" class="nav-link <?php if ($page == 'data_members') echo "active"; ?>">
             <i class="nav-icon fas fa-user-check"></i>
@@ -581,8 +585,22 @@
                 </p>
               </a>
             </li>
+          </ul>
+        </li>
+
+        <!-- Helpdesk -->
+        <li class="nav-item has-treeview <?php if ($page == 'helpdesk') echo "menu-open"; ?>">
+          <a href="#" class="nav-link <?php if ($page == 'helpdesk') echo "active"; ?>">
+            <i class="nav-icon fas fa-user-check"></i>
+            <p>
+              Helpdesk
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+
+          <ul class="nav nav-treeview">
             <li class="nav-item submenu-custom">
-              <a href="<?php echo base_url('helpdesk/users'); ?>" class="nav-link <?php if ($page == 'users') echo " active";  ?>">
+              <a href="<?php echo base_url('helpdesk/users'); ?>" class="nav-link <?php if ($page == 'helpdesk_users') echo " active";  ?>">
                 <i class="far fa-circle fa-sm"></i>
                 <p>
                   Users 2

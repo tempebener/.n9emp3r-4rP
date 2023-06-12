@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html>
-
-  <?php $this->load->view('layouts_admin/head'); ?>
-
-<body class="hold-transition sidebar-mini layout-fixed">
-<!-- Site wrapper -->
-<div class="wrapper">
-  
-  <?php 
-    //Navbar
-    $this->load->view('layouts_admin/navbar');
-
-    //Sidebar
-    $this->load->view('layouts_admin/sidebar'); 
-  ?>
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<?php 
+  $company_profile = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('level_id')))->row_array(); 
+?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -59,35 +43,35 @@
                     </tr>
                   </thead>
                   <tbody>
-                  <?php foreach($data as $u){ ?>
+                  <?php foreach($users as $u): ?>
                     <tr>
                       <td>
-                          <a href="<?= site_url('helpdesk/edit/'.$u['id_users']) ?>" title='Edit' class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
-                          <a href="<?= site_url('helpdesk/delete/'.$u['id_users']) ?>" title='Delete' class="btn btn-sm btn-danger del"><i class="fa fa-trash-alt"></i></a>
+                          <a href="<?= site_url('helpdesk/edit/'.$u->id) ?>" title='Edit' class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                          <a href="<?= site_url('helpdesk/delete/'.$u->id) ?>" title='Delete' class="btn btn-sm btn-danger del"><i class="fa fa-trash-alt"></i></a>
                       </td>
                       <td><?= isset($no) ? ++$no : $no=1 ?> </td>
-                      <td><?= $u['id_users'] ?></td>
-                      <td><?= $u['name'] ?></td>
+                      <td><?= $u->id ?></td>
+                      <td><?= $u->name ?></td>
                       <td>
                         <?php
-                            if($u['level_id']=="1"){
+                            if($u->level_id=="1"){
                                 echo "ADMINISTRATOR";
-                            }elseif($u['level_id']=="2"){
+                            }elseif($u->level_id=="2"){
                                 echo "USER";
                             }
                         ?>
                       </td>
                       <td>
                         <?php
-                            if($u['blocked']=="No"){
+                            if($u->blocked=="No"){
                                 echo "No";
-                            }elseif($u['blocked']=="Yes"){
+                            }elseif($u->blocked=="Yes"){
                                 echo "Yes";
                             }
                         ?>
                       </td>
                     </tr>
-                  <?php } ?>
+                  <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>
@@ -101,33 +85,5 @@
     <!-- /.content -->
 
     <!-- Modal Edit User -->
-    <?php include 'edit.php';  ?>
   </div>
   <!-- /.content-wrapper -->
-  <?php 
-  //Footer
-  $this->load->view('layouts_admin/footer');
-  ?>
-</div>
-<!-- ./wrapper -->
-
-<?php 
-  //Script
-  $this->load->view('layouts_admin/script'); 
-?>
-
-</body>
-<script type="text/javascript">
-  
-      $(function () {
-        $('#example').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
-</script>
-</html>

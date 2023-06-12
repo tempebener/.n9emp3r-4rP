@@ -13,3 +13,10 @@
   line-height: 1;
   color: #777;
 }
+.breadcrumb-item {
+  display: inline;
+}
+.alert-custom{
+  position: absolute !important;
+  right: 0;
+}

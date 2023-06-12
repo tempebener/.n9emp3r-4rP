@@ -3,13 +3,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_user extends CI_Model {
 
-	/*
-	| ----------------------SERVER SIDE DATA MEMBERS----------------------------------
-	*/
-
+	private $_table = "frs_users";
 	private $column_order = array(null, 'id', 'nama','email', 'date_created'); //set column field database for datatable orderable
 	private $column_search = array('id', 'nama','email', 'date_created'); //set column field database for datatable searchable 
 	private $order = array('id' => 'asc'); // default order 
+	public function rules()
+    {
+        return [
+            [
+                'field' => 'name',  //samakan dengan atribute name pada tags input
+                'label' => 'name',  // label yang kan ditampilkan pada pesan error
+                'rules' => 'trim|required' //rules validasi
+            ],
+            [
+                'field' => 'level_id',
+                'label' => 'level_id',
+                'rules' => 'required'
+            ]
+        ];
+    }
 
 	private function _frs_users()
 	{
@@ -125,12 +137,41 @@ class M_user extends CI_Model {
 		return $query->result();
 	}
 
-	public function view_join_users($order){
-		$this->db->select('*,(u.id) as id_users,(ul.id) as id_users_level');
-		$this->db->from('frs_users u');
-		$this->db->join('frs_users_level ul', 'u.id = ul.id');
-		$this->db->order_by($order,"DESC");
-		return $this->db->get()->result_array();
+	public function getLevelById($idUser) {
+		return $this->db->get_where('frs_users_level', array('id' => $idUser));
+	}
+
+	public function view_join_users(){
+		$this->db->select("*");
+		$this->db->join("frs_users_level", "frs_users.id = frs_users_level.id");
+		$this->db->from("frs_users");
+		// $this->db->order_by($order,"DESC");
+		return $this->db->get();
+	}
+
+	public function view_join_users2(){
+        return $this->db->query("SELECT *, u.id as id_users FROM frs_users u JOIN frs_users_level ul ON u.id = ul.id ORDER BY u.id DESC")->result();
+	}
+
+	public function view_join_users3(){
+		$query = $this->db->get("frs_users");
+		return $query->result();
+	}
+
+	public function getById($id){
+		return $this->db->get_where('frs_users', ["id" => $id])->row();
+	}
+
+	public function update() {
+		$post = $this->input->post();
+		$this->name = $post["name"];
+		$this->level_id = $post["level_id"];
+		$this->access_app = $post["access_app"];
+		return $this->db->update($this->_table, $this, array('id' => $post['id']));
+	}
+
+	public function delete($id){
+		return $this->db->delete($this->_table, array("id" => $id));
 	}
 }
 

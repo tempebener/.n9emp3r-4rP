@@ -22,12 +22,16 @@
               <div class="form-group">
                 <label for="level_id">Level</label>
                 <!-- <input type="text" class="form-control" name="level_id" placeholder="Level"> -->
-                <?php
-                  foreach($all_level as $level) {
-                      $al[$level->id] = $level->description;
-                  }
-                ?>
-                <?= form_dropdown('level_id', $al, set_value('level', $this->uri->segment(3)), 'class="form-control select2 tip" id="level_id"  required="required" style="width:100%;"'); ?>
+                <option value="" selected disabled>Select User Level</option>
+                  <?php foreach($all_level as $level){
+                    $all_level = $row['id'];
+                    if ($all_level==$level['id']){
+                  ?>
+                    <option value="<?php echo $level['id'];?>" selected><?php echo $level['description'];?></option>
+                  <?php }else{ ?>
+                    <option value="<?php echo $level['id'];?>"><?php echo $level['description'];?></option>
+                  <?php }
+                  };?>
                 <small id="level_id_error" class="text-danger"> </small>
               </div>
             </div>
@@ -43,11 +47,10 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="blocked">Blocked</label>
-                <select name="blocked" class="form-control" data-plugin="select_hrm" data-placeholder="Select One">
-                  <!-- <option <?php if($data->blocked == "No"): ?> selected="selected" <?php endif;?> value="No">No</option>
-                  <option <?php if($data->blocked == "Yes"): ?> selected="selected" <?php endif;?> value="Yes">Yes</option> -->
-                  <option selected="selected" value="No">No</option>
+                <select class="form-control" name="blocked" id="blocked">
+                  <option value="" selected disabled>Select No/Yes</option>
                   <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
                 <small id="blocked_error" class="text-danger"> </small>
               </div>
