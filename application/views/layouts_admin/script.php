@@ -34,4 +34,4 @@
 <script src="<?php echo base_url(); ?>assets/adminlte3/plugins/allinnew/npm-bootstrap@4.6.2/js/bootstrap.bundle.min.js"></script>
 
 <!-- Di disable karna crash sama datatables.net -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script> -->

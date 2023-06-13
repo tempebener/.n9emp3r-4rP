@@ -10,7 +10,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item "><i class="fas fa-user-check"></i> <a href="<?= base_url('helpdesk/users'); ?>">Users</a></li>
+              <li class="breadcrumb-item "><a href="<?= base_url('helpdesk/users'); ?>"><i class="fas fa-user-check"></i> Helpdesk</a></li>
               <li class="breadcrumb-item active"> Edit Users</li>
             </ol>
           </div><!-- /.col -->
@@ -79,16 +79,16 @@
 
                   <div class="form-group col-sm-6">
                     <label for="access_app">Access Apps*</label>
-                      <select class="form-control" id="access_app" name="access_app">
-                        <option value="" selected disabled>-- Choose Access Apps --</option>
-                        <option value="1" <?php if ($users->access_app == "1") : echo "selected";
-                                                endif; ?>>Grant</option>
-                        <option value="2" <?php if ($users->access_app == "2") : echo "selected";
-                                                    endif; ?>>Revoke</option>
-                      </select>
-                      <small class="text-danger">
-                        <?php echo form_error('access_app') ?>
-                      </small>
+                    <select class="form-control" id="access_app" name="access_app">
+                      <option value="" selected disabled>-- Choose Access Apps --</option>
+                      <option value="1" <?php if ($users->access_app == "1") : echo "selected";
+                                              endif; ?>>Grant</option>
+                      <option value="2" <?php if ($users->access_app == "2") : echo "selected";
+                                                  endif; ?>>Revoke</option>
+                    </select>
+                    <small class="text-danger">
+                      <?php echo form_error('access_app') ?>
+                    </small>
                   </div>
 
                   <div class="form-group col-sm-6">

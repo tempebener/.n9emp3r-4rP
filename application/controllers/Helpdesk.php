@@ -35,27 +35,30 @@ class Helpdesk extends CI_Controller {
 	}
 
 	public function add_users(){
+		$data ['title']    = "Helpdesk | Add Users";
+		$data ['page']    = "helpdesk_add_users";
+		$data ['nama']    = $this->session->userdata('name');
 		$user = $this->M_user;
 		$validation = $this->form_validation;
-		$validation->set_rules($user->rules());
+		$validation->set_rules($user->add_rules());
 
 		if ($validation->run()) {
 			$user->save();
 			$this->session->set_flashdata('success', 'Saved successfully');
 		}
 
-		$this->template->load('layouts_admin/template','v_helpdesk/add');
+		$this->template->load('layouts_admin/template','v_helpdesk/add_users', $data);
 	}
 
 	public function edit_users($id = null){
-		$data ['title']    = "Helpdesk | Users";
+		$data ['title']    = "Helpdesk | Edit Users";
 		$data ['page']    = "helpdesk_users";
 		$data ['nama']    = $this->session->userdata('name');
 		if (!isset($id)) redirect('helpdesk/users');
 
 		$user = $this->M_user;
 		$validation = $this->form_validation;
-		$validation->set_rules($user->rules());
+		$validation->set_rules($user->edit_rules());
 
 		if ($validation->run()) {
 			$user->update();

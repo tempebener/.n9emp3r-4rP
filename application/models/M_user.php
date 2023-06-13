@@ -7,7 +7,22 @@ class M_user extends CI_Model {
 	private $column_order = array(null, 'id', 'nama','email', 'date_created'); //set column field database for datatable orderable
 	private $column_search = array('id', 'nama','email', 'date_created'); //set column field database for datatable searchable 
 	private $order = array('id' => 'asc'); // default order 
-	public function rules()
+	public function add_rules()
+    {
+        return [
+            [
+                'field' => 'name',  //samakan dengan atribute name pada tags input
+                'label' => 'name',  // label yang kan ditampilkan pada pesan error
+                'rules' => 'trim|required' //rules validasi
+            ],
+            [
+                'field' => 'level_id',
+                'label' => 'level_id',
+                'rules' => 'required'
+            ]
+        ];
+    }
+	public function edit_rules()
     {
         return [
             [
@@ -162,13 +177,19 @@ class M_user extends CI_Model {
 		return $this->db->get_where($this->_table, ["id" => $id])->row();
 	}
 
-	public function save()
-	{
+	// public function save($usernamecheck=true){
+		// if($usernamecheck) {
+		// 	if( $this->CI->db->get_where('frs_users', array('id' => $data['id']))->num_rows > 0 ) {
+		// 		$this->error = "This {$data['id']} already taken.";
+		// 		return $this->error;
+		// 	}
+		// }
+	public function save(){
 		$post = $this->input->post();
-		$this->product_id = uniqid();
+		// $password = $this->input->post('password');
 		$this->id = $post["id"];
 		$this->name = $post["name"];
-		$this->password = $post["password"];
+		$this->password = $this->encryption->encrypt($post["password"]);
 		$this->level_id = $post["level_id"];
 		$this->blocked = $post["blocked"];
 		$this->access_app = $post["access_app"];

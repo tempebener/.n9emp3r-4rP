@@ -48,36 +48,7 @@
         filebrowserImageBrowseUrl : '<?php echo base_url('asset/kcfinder'); ?>'
       });
     </script> -->
-
-    <script>
-        $(function(){
-            $(document).on('click','.detail-barang',function(e){
-                e.preventDefault();
-                $("#myModal").modal('show');
-                $.post("<?php echo site_url()?>app/detail_barang",
-                    {id:$(this).attr('data-id')},
-                    function(html){
-                        $(".modal-body").html(html);
-                    }
-                );
-            });
-        });
-    </script>
-
-    <script>
-        $(function(){
-            $(document).on('click','.riwayat-pembelian',function(e){
-                e.preventDefault();
-                $("#myModalRiwayat").modal('show');
-                $.post("<?php echo site_url()?>app/detail_pembelian",
-                    {id:$(this).attr('data-id')},
-                    function(html){
-                        $(".modal-body").html(html);
-                    }
-                );
-            });
-        });
-    </script>
+    
     <script type="text/javascript">
       
       $(document).ready(function() {
@@ -89,6 +60,18 @@
           table.buttons().container()
               .appendTo( '#example_wrapper .col-md-6:eq(0)' );
       } );
+    </script>
+
+    <script type="text/javascript">
+      $("input#username").on({
+        keydown: function(e) {
+          if (e.which === 32)
+            return false;
+        },
+        change: function() {
+          this.value = this.value.replace(/\s/g, "");
+        }
+      });
     </script>
 
     <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
