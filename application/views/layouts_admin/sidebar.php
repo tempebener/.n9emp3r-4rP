@@ -567,7 +567,7 @@
         </li>
 
         <!-- Data Members -->
-        <li class="nav-item has-treeview <?php if ($page == 'data_members') echo "menu-open"; ?>">
+        <!-- <li class="nav-item has-treeview <?php if ($page == 'data_members') echo "menu-open"; ?>">
           <a href="#" class="nav-link <?php if ($page == 'data_members') echo "active"; ?>">
             <i class="nav-icon fas fa-user-check"></i>
             <p>
@@ -586,9 +586,9 @@
               </a>
             </li>
           </ul>
-        </li>
+        </li> -->
 
-        <!-- Helpdesk -->
+        <!-- Helpdesk --> <!-- Custom Baru -->
         <li class="nav-item has-treeview <?php if ($page == 'helpdesk') echo "menu-open"; ?>">
           <a href="#" class="nav-link <?php if ($page == 'helpdesk') echo "active"; ?>">
             <i class="nav-icon fas fa-user-check"></i>
@@ -603,7 +603,7 @@
               <a href="<?php echo base_url('helpdesk/users'); ?>" class="nav-link <?php if ($page == 'helpdesk_users') echo " active";  ?>">
                 <i class="far fa-circle fa-sm"></i>
                 <p>
-                  Users 2
+                  Users
                 </p>
               </a>
             </li>
