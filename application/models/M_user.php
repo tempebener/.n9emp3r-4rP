@@ -159,7 +159,23 @@ class M_user extends CI_Model {
 	}
 
 	public function getById($id){
-		return $this->db->get_where('frs_users', ["id" => $id])->row();
+		return $this->db->get_where($this->_table, ["id" => $id])->row();
+	}
+
+	public function save()
+	{
+		$post = $this->input->post();
+		$this->product_id = uniqid();
+		$this->id = $post["id"];
+		$this->name = $post["name"];
+		$this->password = $post["password"];
+		$this->level_id = $post["level_id"];
+		$this->blocked = $post["blocked"];
+		$this->access_app = $post["access_app"];
+		$this->create_date = date('Y-m-d H:i:s');
+		$this->create_user = $this->session->id;
+		$this->last_ip = $this->input->ip_address();
+		return $this->db->insert($this->_table, $this);
 	}
 
 	public function update() {

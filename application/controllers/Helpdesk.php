@@ -34,7 +34,20 @@ class Helpdesk extends CI_Controller {
 		$this->template->load('layouts_admin/template','v_helpdesk/index', $data);
 	}
 
-	public function edit($id = null){
+	public function add_users(){
+		$user = $this->M_user;
+		$validation = $this->form_validation;
+		$validation->set_rules($user->rules());
+
+		if ($validation->run()) {
+			$user->save();
+			$this->session->set_flashdata('success', 'Saved successfully');
+		}
+
+		$this->template->load('layouts_admin/template','v_helpdesk/add');
+	}
+
+	public function edit_users($id = null){
 		$data ['title']    = "Helpdesk | Users";
 		$data ['page']    = "helpdesk_users";
 		$data ['nama']    = $this->session->userdata('name');
@@ -46,11 +59,11 @@ class Helpdesk extends CI_Controller {
 
 		if ($validation->run()) {
 			$user->update();
-			$this->session->set_flashdata('success', 'Berhasil disimpan');
+			$this->session->set_flashdata('success', 'Saved successfully');
 		}
 		$data["users"] = $user->getById($id);
 		if (!$data["users"]) show_404();
-		$this->template->load('layouts_admin/template','v_helpdesk/edit', $data);
+		$this->template->load('layouts_admin/template','v_helpdesk/edit_users', $data);
 	}
 
     public function delete($id=null)

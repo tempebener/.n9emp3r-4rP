@@ -27,7 +27,7 @@
               <div class="card-header">
                 <h3 class="card-title">Users</h3>
                 <div class="float-sm-right">
-                  <a class="btn btn-success btn-xs" href="frsHelpdeskUsers.php?act=add" title="Add new"><i class="fa fa-plus"></i> <span class="hidden-xs hidden-sm">Add New</span></a>
+                  <a class="btn btn-success btn-xs" href="<?= site_url('helpdesk/add_users') ?>" title="Add new"><i class="fa fa-plus"></i> <span class="hidden-xs hidden-sm">Add New</span></a>
                 </div>
               </div>
               <div class="card-body table-responsive">
@@ -46,7 +46,7 @@
                   <?php foreach($users as $u): ?>
                     <tr>
                       <td>
-                          <a href="<?= site_url('helpdesk/edit/'.$u->id) ?>" title='Edit' class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                          <a href="<?= site_url('helpdesk/edit_users/'.$u->id) ?>" title='Edit' class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
                           <a href="<?= site_url('helpdesk/delete/'.$u->id) ?>" title='Delete' class="btn btn-sm btn-danger del"><i class="fa fa-trash-alt"></i></a>
                       </td>
                       <td><?= isset($no) ? ++$no : $no=1 ?> </td>
