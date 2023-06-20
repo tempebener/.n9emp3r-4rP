@@ -33,6 +33,6 @@
   <!-- Bayoeway Style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte3/dist/css/bayoeway-style.css">
 
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte3/plugins/allinnew/npm-bootstrap@4.6.2/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte3/plugins/allinnew/npm-bootstrap@4.6.2/css/bootstrap.min.css"> -->
 
 </head>

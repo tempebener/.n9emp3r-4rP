@@ -54,7 +54,7 @@
       $(document).ready(function() {
           var table = $('#example').DataTable( {
               lengthChange: false,
-              buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+              buttons: [ 'excel']
           } );
        
           table.buttons().container()

@@ -3,13 +3,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_supplier extends CI_Model {
 
-	/*
-	| ----------------------SERVER SIDE DATA PERTANYAAN----------------------------------
-	*/
-
+	private $_table = "frs_purchase_vendor";
 	private $column_order = array(null, 'account', 'name','npwp_no', 'address', 'city', 'contact_person', 'email_address', 'tlp_no', 'hp_no', 'fax_no', 'currency', 'payment_method', 'payment_top', 'payment_top_start', 'limit_credit', 'tax_ppn', 'tax_pph23', 'account_bank', 'name_bank', 'summary', 'coa_payable', 'coa_purchase_advance', 'blocked', 'category', 'category_book', 'status_id', 'create_user', 'create_date', 'modified_user', 'modified_date'); //set column field database for datatable orderable
 	private $column_search = array('account', 'name','npwp_no', 'address', 'city', 'contact_person', 'email_address', 'tlp_no', 'hp_no', 'fax_no', 'currency', 'payment_method', 'payment_top', 'payment_top_start', 'limit_credit', 'tax_ppn', 'tax_pph23', 'account_bank', 'name_bank', 'summary', 'coa_payable', 'coa_purchase_advance', 'blocked', 'category', 'category_book', 'status_id', 'create_user', 'create_date', 'modified_user', 'modified_date'); //set column field database for datatable searchable 
 	private $order = array('account' => 'desc'); // default order 
+	public function add_rules()
+    {
+        return [
+            [
+                'field' => 'account',
+                'label' => 'account',
+                'rules' => 'trim|required'
+            ],
+            [
+                'field' => 'name',  //samakan dengan atribute name pada tags input
+                'label' => 'name',  // label yang kan ditampilkan pada pesan error
+                'rules' => 'trim|required' //rules validasi
+            ],
+        ];
+    }
+	public function edit_rules()
+    {
+        return [
+            // [
+            //     'field' => 'account',
+            //     'label' => 'account',
+            //     'rules' => 'trim|required'
+            // ],
+            [
+                'field' => 'name',  //samakan dengan atribute name pada tags input
+                'label' => 'name',  // label yang kan ditampilkan pada pesan error
+                'rules' => 'trim|required' //rules validasi
+            ],
+        ];
+    }
 
 	private function frs_purchase_vendor($category)
 	{
@@ -96,21 +123,89 @@ class M_supplier extends CI_Model {
 		return $this->db->get_where('frs_purchase_vendor', array('account' => $account));
 	}
 
-	public function acakSoal($category, $limit)
-	{ 
-		$this->db->select('account, category');
-		$this->db->from('frs_purchase_vendor');
-		$this->db->where('category', $category);
-		$this->db->order_by('rand()');
-		$this->db->limit($limit); 
-		return $this->db->get();
+	public function getById($id){
+		return $this->db->get_where($this->_table, ["account" => $id])->row();
 	}
-		public function cekKategoriById($category)
+
+	public function view_where($table,$data)
 	{
-		return $this->db->get_where('vendor_category', array('category' => $category));
+		$this->db->where($data);
+		return $this->db->get($table);
+	}
+
+	public function view_join_suppliers(){
+		$query = $this->db->get($this->_table);
+		return $query->result();
+	}
+
+	public function save(){
+		$post = $this->input->post();
+		$this->account = $post["account"];
+		$this->name = $post["name"];
+		$this->npwp_no = $post["npwp_no"];
+		$this->address = $post["address"];
+		$this->city = $post["city"];
+		$this->contact_person = $post["contact_person"];
+		$this->email_address = $post["email_address"];
+		$this->tlp_no = $post["tlp_no"];
+		$this->hp_no = $post["hp_no"];
+		$this->fax_no = $post["fax_no"];
+		$this->currency = $post["currency"];
+		$this->payment_method = $post["payment_method"];
+		$this->payment_top = $post["payment_top"];
+		$this->payment_top_start = $post["payment_top_start"];
+		$this->limit_credit = $post["limit_credit"];
+		$this->tax_ppn = $post["tax_ppn"];
+		$this->tax_pph23 = $post["tax_pph23"];
+		$this->account_bank = $post["account_bank"];
+		$this->name_bank = $post["name_bank"];
+		$this->summary = $post["summary"];
+		// $this->coa_payable = $post["coa_payable"];
+		// $this->coa_purchase_advance = $post["coa_purchase_advance"];
+		$this->blocked = 'No';
+		// $this->category = $post["category"];
+		// $this->category_book = $post["category_book"];
+		// $this->status_id = $post["status_id"];
+		$this->create_user = $this->session->id;
+		$this->create_date = date('Y-m-d H:i:s');
+		return $this->db->insert($this->_table, $this);
+	}
+
+	public function update() {
+		$post = $this->input->post();
+		// $this->account = $post["account"];
+		$this->name = $post["name"];
+		$this->npwp_no = $post["npwp_no"];
+		$this->address = $post["address"];
+		$this->city = $post["city"];
+		$this->contact_person = $post["contact_person"];
+		$this->email_address = $post["email_address"];
+		$this->tlp_no = $post["tlp_no"];
+		$this->hp_no = $post["hp_no"];
+		$this->fax_no = $post["fax_no"];
+		$this->currency = $post["currency"];
+		$this->payment_method = $post["payment_method"];
+		$this->payment_top = $post["payment_top"];
+		$this->payment_top_start = $post["payment_top_start"];
+		$this->limit_credit = $post["limit_credit"];
+		$this->tax_ppn = $post["tax_ppn"];
+		$this->tax_pph23 = $post["tax_pph23"];
+		$this->account_bank = $post["account_bank"];
+		$this->name_bank = $post["name_bank"];
+		$this->summary = $post["summary"];
+		// $this->coa_payable = $post["coa_payable"];
+		// $this->coa_purchase_advance = $post["coa_purchase_advance"];
+		// $this->blocked = $post["blocked"];
+		// $this->category = $post["category"];
+		// $this->category_book = $post["category_book"];
+		// $this->status_id = $post["status_id"];
+		$this->modified_user = $this->session->id;
+		$this->modified_date = date('Y-m-d H:i:s');
+		return $this->db->update($this->_table, $this, array('account' => $post['account']));
+	}
+
+	public function delete($account){
+		return $this->db->delete($this->_table, array("account" => $account));
 	}
 
 }
-
-/* End of file M_supplier.php */
-/* Location: ./application/models/M_supplier.php */

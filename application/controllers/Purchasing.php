@@ -70,18 +70,59 @@ class Purchasing extends CI_Controller {
 	  	$this->load->view('v_dataPurchaseOrder/index', $data);
 	}
 
-	public function list_supplier()
+	public function suppliers()
 	{
 		$data ['title']   = "Purchasing | Supplier";
-		$data ['page']    = "purchasing_list_supplier";
+		$data ['page']    = "purchasing_supplier";
 		$data ['nama']    = $this->session->userdata('name');
-		$data ['company_profile'] = $this->M_user->view_where('frs_general_company_profile', array('account'=>$this->session->userdata('level_id')))->row_array();
-		$data ['all_level']    = $this->M_user->allLevel();
+		$data ['suppliers'] = $this->M_supplier->view_join_suppliers();
+		// $data ['all_level']    = $this->M_supplier->allLevel();
 
-		$this->load->view('v_supplier/index', $data);
+		$this->template->load('layouts_admin/template','v_supplier/index', $data);
+	}
+
+	public function add_suppliers(){
+		$data ['title']    = "Purchasing | Add Suppliers";
+		$data ['page']    = "purchasing_add_suppliers";
+		$data ['nama']    = $this->session->userdata('name');
+		$supplier = $this->M_supplier;
+		$validation = $this->form_validation;
+		$validation->set_rules($supplier->add_rules());
+
+		if ($validation->run()) {
+			$supplier->save();
+			$this->session->set_flashdata('success', 'Saved successfully');
+		}
+
+		$this->template->load('layouts_admin/template','v_supplier/add_suppliers', $data);
+	}
+
+	public function edit_suppliers($account = null){
+		$data ['title']    = "Purchasing | Edit Suppliers";
+		$data ['page']    = "purchasing_edit_suppliers";
+		$data ['nama']    = $this->session->userdata('name');
+		if (!isset($account)) redirect('purchasing/suppliers');
+
+		$supplier = $this->M_supplier;
+		$validation = $this->form_validation;
+		$validation->set_rules($supplier->edit_rules());
+
+		if ($validation->run()) {
+			$supplier->update();
+			$this->session->set_flashdata('success', 'Saved successfully');
+		}
+		$data["suppliers"] = $supplier->getById($account);
+		if (!$data["suppliers"]) show_404();
+		$this->template->load('layouts_admin/template','v_supplier/edit_suppliers', $data);
+	}
+
+	public function delete_suppliers($id=null)
+	{
+		if (!isset($id)) show_404();
+
+		if ($this->M_user->delete($id)) {
+			redirect(site_url('purchasing/suppliers'));
+		}
 	}
 
 }
-
-/* End of file DataMember.php */
-/* Location: ./application/controllers/DataMember.php */
