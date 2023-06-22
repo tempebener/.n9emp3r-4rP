@@ -211,6 +211,3 @@ class M_user extends CI_Model {
 		return $this->db->delete($this->_table, array("id" => $id));
 	}
 }
-
-/* End of file M_user.php */
-/* Location: ./application/models/M_user.php */

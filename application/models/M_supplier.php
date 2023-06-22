@@ -11,11 +11,6 @@ class M_supplier extends CI_Model {
     {
         return [
             [
-                'field' => 'account',
-                'label' => 'account',
-                'rules' => 'trim|required'
-            ],
-            [
                 'field' => 'name',  //samakan dengan atribute name pada tags input
                 'label' => 'name',  // label yang kan ditampilkan pada pesan error
                 'rules' => 'trim|required' //rules validasi
@@ -25,11 +20,6 @@ class M_supplier extends CI_Model {
 	public function edit_rules()
     {
         return [
-            // [
-            //     'field' => 'account',
-            //     'label' => 'account',
-            //     'rules' => 'trim|required'
-            // ],
             [
                 'field' => 'name',  //samakan dengan atribute name pada tags input
                 'label' => 'name',  // label yang kan ditampilkan pada pesan error
@@ -140,7 +130,11 @@ class M_supplier extends CI_Model {
 
 	public function save(){
 		$post = $this->input->post();
-		$this->account = $post["account"];
+
+		$code = $this->db->query("SELECT MAX(RIGHT(`account`,1)) as code_max FROM frs_purchase_vendor ORDER BY account DESC LIMIT 1")->row();
+		$code_account = "V".sprintf("%04s", $code->code_max+1);
+
+		$this->account = $code_account;
 		$this->name = $post["name"];
 		$this->npwp_no = $post["npwp_no"];
 		$this->address = $post["address"];
